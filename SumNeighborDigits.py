@@ -41,11 +41,11 @@ def apply_rule(n,rule_number):
     ns.append( int(rule[int(list2num(s[len(s)-2:len(s)]+[0] , 2))]))
     return list2num(ns,2)
 
-iterations = 5 # How many times should we apply the rule to each set of cellular automata?
+iterations = 3 # How many times should we apply the rule to each set of cellular automata?
                 # Keep in mind that currently one can't propagate outside of the magnitude borders.
 
 for r in range(0,255):
-    composed_rule = repeat( lambda x: apply_rule(x,r), 1 ) # Curry and repeatedly compose apply_rule.
-    plt.plot( range(0,100), [composed_rule(x) for x in range(0,100)])
+    composed_rule = repeat( lambda x: apply_rule(x,r), iterations ) # Curry and repeatedly compose apply_rule.
+    plt.plot( range(0,100), [composed_rule(x) for x in range(0,100)]) #, color = (0,(r/255),0))
 
 plt.show()
